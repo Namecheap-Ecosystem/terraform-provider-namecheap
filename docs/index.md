@@ -11,9 +11,9 @@ Use the navigation to the left to read about the available resources.
 ```hcl
 # Configure the Namecheap provider
 provider "namecheap" {
-  username  = "${var.username}"
-  api_user  = "${var.api_user}"
-  api_token = "${var.api_token}"
+  username  = var.username
+  api_user  = var.api_user
+  api_token = var.api_token
 }
 ```
 
