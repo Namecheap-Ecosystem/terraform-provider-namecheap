@@ -24,305 +24,26 @@ func resourceDomain() *schema.Resource {
 				Optional:    true,
 				Default:     1,
 			},
-			"registrant": {
-				Description: "Registrant configuration",
+			"nameservers": {
+				Description: "List of custom nameservers to be associated with the domain name",
 				Type:        schema.TypeList,
 				Optional:    true,
-				Elem: &schema.Resource{
-					Schema: getDomainRegistrantSchema(),
-				},
+				Elem:        &schema.Schema{Type: schema.TypeString},
 			},
-			"tech": {
-				Description: "Tech user configuration",
-				Type:        schema.TypeList,
+			"add_free_who_isguard": {
+				Description: "Adds free WhoisGuard for the domain",
+				Type:        schema.TypeBool,
 				Optional:    true,
-				Elem: &schema.Resource{
-					Schema: getDomainTechSchema(),
-				},
 			},
-			"admin": {
-				Description: "Admin user configuration",
-				Type:        schema.TypeList,
+			"wg_enabled": {
+				Description: "Enables free WhoisGuard for the domain",
+				Type:        schema.TypeBool,
 				Optional:    true,
-				Elem: &schema.Resource{
-					Schema: getDomainAdminSchema(),
-				},
-			},
-			"aux_billing": {
-				Description: "Aux Billing configuration",
-				Type:        schema.TypeList,
-				Optional:    true,
-				Elem: &schema.Resource{
-					Schema: getDomainAuxBillingSchema(),
-				},
-			},
-			"billing": {
-				Description: "Billing configuration",
-				Type:        schema.TypeList,
-				Optional:    true,
-				Elem: &schema.Resource{
-					Schema: getDomainBillingSchema(),
-				},
-			},
-			"extended_attribute": {
-				Description: "Extended attribute",
-				Type:        schema.TypeString,
-				Required:    true,
 			},
 		},
 		CreateContext: resourceDomainCreate,
 		ReadContext:   resourceDomainRead,
 		UpdateContext: resourceDomainUpdate,
-	}
-}
-
-func getDomainRegistrantSchema() map[string]*schema.Schema {
-	return map[string]*schema.Schema{
-		"first_name": {
-			Type:        schema.TypeString,
-			Description: "First name of the registrant",
-			Required:    true,
-		},
-		"last_name": {
-			Type:        schema.TypeString,
-			Description: "Last name of the registrant",
-			Required:    true,
-		},
-		"city": {
-			Type:        schema.TypeString,
-			Description: "City of the registrant address",
-			Required:    true,
-		},
-		"state": {
-			Type:        schema.TypeString,
-			Description: "State province of the registrant address",
-			Required:    true,
-		},
-		"postal_code": {
-			Type:        schema.TypeString,
-			Description: "Postal code of the registrant address",
-			Required:    true,
-		},
-		"address_1": {
-			Type:        schema.TypeString,
-			Description: "Address 1 of the registrant address",
-			Required:    true,
-		},
-		"country": {
-			Type:        schema.TypeString,
-			Description: "Country of the registrant address",
-			Required:    true,
-		},
-		"phone": {
-			Type:        schema.TypeString,
-			Description: "Phone number",
-			Required:    true,
-		},
-		"email": {
-			Type:        schema.TypeString,
-			Description: "Email address of the registrant user",
-			Required:    true,
-		},
-	}
-}
-
-func getDomainTechSchema() map[string]*schema.Schema {
-	return map[string]*schema.Schema{
-		"first_name": {
-			Type:        schema.TypeString,
-			Description: "First name of the registrant",
-			Required:    true,
-		},
-		"last_name": {
-			Type:        schema.TypeString,
-			Description: "Last name of the registrant",
-			Required:    true,
-		},
-		"city": {
-			Type:        schema.TypeString,
-			Description: "City of the registrant address",
-			Required:    true,
-		},
-		"state": {
-			Type:        schema.TypeString,
-			Description: "State province of the registrant address",
-			Required:    true,
-		},
-		"postal_code": {
-			Type:        schema.TypeString,
-			Description: "Postal code of the registrant address",
-			Required:    true,
-		},
-		"address_1": {
-			Type:        schema.TypeString,
-			Description: "Address 1 of the registrant address",
-			Required:    true,
-		},
-		"country": {
-			Type:        schema.TypeString,
-			Description: "Country of the registrant address",
-			Required:    true,
-		},
-		"phone": {
-			Type:        schema.TypeString,
-			Description: "Phone number",
-			Required:    true,
-		},
-		"email": {
-			Type:        schema.TypeString,
-			Description: "Email address of the registrant user",
-			Required:    true,
-		},
-	}
-}
-
-func getDomainAdminSchema() map[string]*schema.Schema {
-	return map[string]*schema.Schema{
-		"first_name": {
-			Type:        schema.TypeString,
-			Description: "First name of the registrant",
-			Required:    true,
-		},
-		"last_name": {
-			Type:        schema.TypeString,
-			Description: "Last name of the registrant",
-			Required:    true,
-		},
-		"city": {
-			Type:        schema.TypeString,
-			Description: "City of the registrant address",
-			Required:    true,
-		},
-		"state": {
-			Type:        schema.TypeString,
-			Description: "State province of the registrant address",
-			Required:    true,
-		},
-		"postal_code": {
-			Type:        schema.TypeString,
-			Description: "Postal code of the registrant address",
-			Required:    true,
-		},
-		"address_1": {
-			Type:        schema.TypeString,
-			Description: "Address 1 of the registrant address",
-			Required:    true,
-		},
-		"country": {
-			Type:        schema.TypeString,
-			Description: "Country of the registrant address",
-			Required:    true,
-		},
-		"phone": {
-			Type:        schema.TypeString,
-			Description: "Phone number",
-			Required:    true,
-		},
-		"email": {
-			Type:        schema.TypeString,
-			Description: "Email address of the registrant user",
-			Required:    true,
-		},
-	}
-}
-
-func getDomainAuxBillingSchema() map[string]*schema.Schema {
-	return map[string]*schema.Schema{
-		"first_name": {
-			Type:        schema.TypeString,
-			Description: "First name of the registrant",
-			Required:    true,
-		},
-		"last_name": {
-			Type:        schema.TypeString,
-			Description: "Last name of the registrant",
-			Required:    true,
-		},
-		"city": {
-			Type:        schema.TypeString,
-			Description: "City of the registrant address",
-			Required:    true,
-		},
-		"state": {
-			Type:        schema.TypeString,
-			Description: "State province of the registrant address",
-			Required:    true,
-		},
-		"postal_code": {
-			Type:        schema.TypeString,
-			Description: "Postal code of the registrant address",
-			Required:    true,
-		},
-		"address_1": {
-			Type:        schema.TypeString,
-			Description: "Address 1 of the registrant address",
-			Required:    true,
-		},
-		"country": {
-			Type:        schema.TypeString,
-			Description: "Country of the registrant address",
-			Required:    true,
-		},
-		"phone": {
-			Type:        schema.TypeString,
-			Description: "Phone number",
-			Required:    true,
-		},
-		"email": {
-			Type:        schema.TypeString,
-			Description: "Email address of the registrant user",
-			Required:    true,
-		},
-	}
-}
-
-func getDomainBillingSchema() map[string]*schema.Schema {
-	return map[string]*schema.Schema{
-		"first_name": {
-			Type:        schema.TypeString,
-			Description: "First name of the registrant",
-			Required:    true,
-		},
-		"last_name": {
-			Type:        schema.TypeString,
-			Description: "Last name of the registrant",
-			Required:    true,
-		},
-		"city": {
-			Type:        schema.TypeString,
-			Description: "City of the registrant address",
-			Required:    true,
-		},
-		"state": {
-			Type:        schema.TypeString,
-			Description: "State province of the registrant address",
-			Required:    true,
-		},
-		"postal_code": {
-			Type:        schema.TypeString,
-			Description: "Postal code of the registrant address",
-			Required:    true,
-		},
-		"address_1": {
-			Type:        schema.TypeString,
-			Description: "Address 1 of the registrant address",
-			Required:    true,
-		},
-		"country": {
-			Type:        schema.TypeString,
-			Description: "Country of the registrant address",
-			Required:    true,
-		},
-		"phone": {
-			Type:        schema.TypeString,
-			Description: "Phone number",
-			Required:    true,
-		},
-		"email": {
-			Type:        schema.TypeString,
-			Description: "Email address of the registrant user",
-			Required:    true,
-		},
 	}
 }
 
@@ -335,6 +56,18 @@ func resourceDomainRead(ctx context.Context, d *schema.ResourceData, meta interf
 		return diag.FromErr(err)
 	}
 
+	if err := d.Set("nameservers", domain.DNSDetails.Nameservers); err != nil {
+		return diag.FromErr(err)
+	}
+
+	if err := d.Set("add_free_who_isguard", domain.Whoisguard); err != nil {
+		return diag.FromErr(err)
+	}
+
+	if err := d.Set("nameservers", domain.DNSDetails.Nameservers); err != nil {
+		return diag.FromErr(err)
+	}
+
 	d.SetId(domain.Name)
 	return diags
 }
@@ -343,8 +76,22 @@ func resourceDomainCreate(ctx context.Context, d *schema.ResourceData, meta inte
 	c := meta.(*namecheap.Client)
 	name := d.Get("name").(string)
 	years := d.Get("years").(int)
+	nameservers := expandStringListFromSetSchema(d.Get("nameservers").(*schema.Set))
 
-	result, err := c.DomainCreate(name, years)
+	opts := namecheap.DomainCreateOption{}
+	if len(nameservers) > 0 {
+		opts.Nameservers = nameservers
+	}
+
+	if v, ok := d.GetOk("add_free_who_isguard"); ok {
+		opts.AddFreeWhoisguard = v.(bool)
+	}
+
+	if v, ok := d.GetOk("wg_enabled"); ok {
+		opts.AddFreeWhoisguard = v.(bool)
+	}
+
+	result, err := c.DomainCreate(name, years, opts)
 	if err != nil {
 		return diag.FromErr(err)
 	}
@@ -371,4 +118,13 @@ func resourceDomainUpdate(ctx context.Context, d *schema.ResourceData, meta inte
 	}
 
 	return resourceDomainRead(ctx, d, meta)
+}
+
+func expandStringListFromSetSchema(list *schema.Set) []string {
+	res := make([]string, list.Len())
+	for i, v := range list.List() {
+		res[i] = v.(string)
+	}
+
+	return res
 }
