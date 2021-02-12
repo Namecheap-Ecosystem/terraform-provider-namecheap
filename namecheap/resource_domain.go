@@ -73,7 +73,6 @@ func resourceDomain() *schema.Resource {
 		CreateContext: resourceDomainCreate,
 		ReadContext:   resourceDomainRead,
 		UpdateContext: resourceDomainUpdate,
-		DeleteContext: resourceDomainDelete,
 	}
 }
 
@@ -327,26 +326,16 @@ func getDomainBillingSchema() map[string]*schema.Schema {
 	}
 }
 
-func resourceDomainRead(ctx context.Context, data *schema.ResourceData, meta interface{}) diag.Diagnostics {
+func resourceDomainRead(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
 	c := meta.(*namecheap.Client)
 	var diags diag.Diagnostics
 
-	// board, err := c.Boards.Get(ctx, data.Id())
-	// if err != nil {
-	// 	return diag.FromErr(err)
-	// }
+	domain, err := c.DomainGetInfo(d.Id())
+	if err != nil {
+		return diag.FromErr(err)
+	}
 
-	// if board == nil {
-	// 	data.SetId("")
-	// 	return diags
-	// }
-
-	// if err := data.Set("boards", board); err != nil {
-	// 	return diag.FromErr(err)
-	// }
-
-	// data.SetId(board.ID)
-	_ = c
+	d.SetId(domain.Name)
 	return diags
 }
 
@@ -364,34 +353,22 @@ func resourceDomainCreate(ctx context.Context, d *schema.ResourceData, meta inte
 	return resourceDomainRead(ctx, d, meta)
 }
 
-func resourceDomainUpdate(ctx context.Context, data *schema.ResourceData, meta interface{}) diag.Diagnostics {
+func resourceDomainUpdate(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
 	c := meta.(*namecheap.Client)
-	// id := data.Id()
-	// name := data.Get("name").(string)
-	// description := data.Get("description").(string)
 
-	// req := &miro.UpdateBoardRequest{
-	// 	Name:        name,
-	// 	Description: description,
-	// }
+	domain, err := c.DomainGetInfo(d.Id())
+	if err != nil {
+		return diag.FromErr(err)
+	}
 
-	// _, err := c.Boards.Update(ctx, id, req)
-	// if err != nil {
-	// 	return diag.FromErr(err)
-	// }
+	var years int
+	if d.HasChange("years") {
+		years = d.Get("years").(int)
+	}
 
-	_ = c
-	return resourceDomainRead(ctx, data, meta)
-}
+	if _, err := c.DomainRenew(domain.Name, years); err != nil {
+		return diag.FromErr(err)
+	}
 
-func resourceDomainDelete(ctx context.Context, data *schema.ResourceData, meta interface{}) diag.Diagnostics {
-	c := meta.(*namecheap.Client)
-	var diags diag.Diagnostics
-	// if err := c.Boards.Delete(ctx, data.Id()); err != nil {
-	// 	return diag.FromErr(err)
-	// }
-
-	// data.SetId("")
-	_ = c
-	return diags
+	return resourceDomainRead(ctx, d, meta)
 }
