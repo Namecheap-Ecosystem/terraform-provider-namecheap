@@ -21,6 +21,7 @@ provider "namecheap" {
 
 The following arguments are supported:
 
-* `username` - (Required) Username of the user.
-* `api_user` - (Required) User of the API token.
+* `username`  - (Required) Username of the user.
+* `api_user`  - (Required) User of the API token.
 * `api_token` - (Required) Credential.
+* `url`       - (Optional) The URL of the endpoint. Defaults to Production API URL. You can specify the sandbox API.

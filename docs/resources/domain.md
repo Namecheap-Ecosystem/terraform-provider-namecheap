@@ -16,8 +16,8 @@ resource "namecheap_domain" "mydomain" {
 
 The following arguments are supported:
 
-* `name` - (Required) Pipeline name.
-* `description` - (Optional) Pipeline JSON content.
+* `name` - (Required) The domain name.
+* `years` - (Optional) Number of years to register, defaults to `1` years.
 
 ## Import
 

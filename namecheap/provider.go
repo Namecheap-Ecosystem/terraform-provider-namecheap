@@ -28,6 +28,12 @@ func Provider() *schema.Provider {
 				Description: "Token for the API",
 				Required:    true,
 			},
+			"url": {
+				Type:        schema.TypeString,
+				Description: "URL of the API endpoint",
+				Optional:    true,
+				Default:     "https://api.namecheap.com/xml.response",
+			},
 		},
 		ResourcesMap: map[string]*schema.Resource{
 			"namecheap_domain": resourceDomain(),
@@ -38,10 +44,15 @@ func Provider() *schema.Provider {
 }
 
 func providerConfigureFunc(_ context.Context, data *schema.ResourceData) (interface{}, diag.Diagnostics) {
+	var diags diag.Diagnostics
 	username := data.Get("username").(string)
 	apiUser := data.Get("api_user").(string)
 	apiToken := data.Get("api_token").(string)
 
-	var diags diag.Diagnostics
-	return namecheap.NewClient(apiUser, apiToken, username), diags
+	c := namecheap.NewClient(apiUser, apiToken, username)
+	if v, ok := data.GetOk("url"); ok {
+		c.BaseURL = v.(string)
+	}
+
+	return c, diags
 }
