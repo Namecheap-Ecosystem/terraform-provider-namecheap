@@ -3,7 +3,7 @@ package namecheap
 import (
 	"context"
 
-	namecheap "github.com/billputer/go-namecheap"
+	namecheap "github.com/Namecheap-Ecosystem/go-namecheap"
 
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 
