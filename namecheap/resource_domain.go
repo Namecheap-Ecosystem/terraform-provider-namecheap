@@ -2,6 +2,7 @@ package namecheap
 
 import (
 	"context"
+	"errors"
 
 	namecheap "github.com/billputer/go-namecheap"
 
@@ -44,6 +45,7 @@ func resourceDomain() *schema.Resource {
 		CreateContext: resourceDomainCreate,
 		ReadContext:   resourceDomainRead,
 		UpdateContext: resourceDomainUpdate,
+		DeleteContext: resourceDomainDelete,
 	}
 }
 
@@ -118,6 +120,10 @@ func resourceDomainUpdate(ctx context.Context, d *schema.ResourceData, meta inte
 	}
 
 	return resourceDomainRead(ctx, d, meta)
+}
+
+func resourceDomainDelete(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
+	return diag.FromErr(errors.New("this resource can't be deleted because the Namecheap API does not provide this operation. Please delete the actual resource and remove from the state"))
 }
 
 func expandStringListFromSetSchema(list *schema.Set) []string {
