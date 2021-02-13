@@ -11,7 +11,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 )
 
-// API doc: https://www.namecheap.com/support/api/methods/domains/create/
+// API doc: https://www.namecheap.com/support/api/methods/
 func resourceDomain() *schema.Resource {
 	return &schema.Resource{
 		Schema: map[string]*schema.Schema{
