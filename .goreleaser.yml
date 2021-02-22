@@ -28,11 +28,7 @@ builds:
       goarch: '386'
   binary: '{{ .ProjectName }}_v{{ .Version }}'
 archives:
-- id: zip
-  format: zip
-  name_template: '{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}'
-- id: default
-  format: tar.gz
+- format: zip
   name_template: '{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}'
 checksum:
   name_template: '{{ .ProjectName }}_{{ .Version }}_SHA256SUMS'
@@ -51,6 +47,6 @@ signs:
       - "${artifact}"
 release:
   # Visit your project's GitHub Releases page to publish this release.
-  draft: false
+  # draft: false
 changelog:
-  skip: false
+  skip: true
