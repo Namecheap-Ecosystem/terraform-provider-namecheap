@@ -17,22 +17,26 @@ func Provider() *schema.Provider {
 				Type:        schema.TypeString,
 				Description: "Name of the user",
 				Required:    true,
+				DefaultFunc: schema.EnvDefaultFunc("NAMECHEAP_USERNAME", nil),
 			},
 			"api_user": {
 				Type:        schema.TypeString,
 				Description: "User of the API token",
 				Required:    true,
+				DefaultFunc: schema.EnvDefaultFunc("NAMECHEAP_API_USER", nil),
 			},
 			"api_token": {
 				Type:        schema.TypeString,
 				Description: "Token for the API",
 				Required:    true,
+				DefaultFunc: schema.EnvDefaultFunc("NAMECHEAP_API_TOKEN", nil),
 			},
 			"url": {
 				Type:        schema.TypeString,
 				Description: "URL of the API endpoint",
 				Optional:    true,
 				Default:     "https://api.namecheap.com/xml.response",
+				DefaultFunc: schema.EnvDefaultFunc("NAMECHEAP_URL", nil),
 			},
 		},
 		ResourcesMap: map[string]*schema.Resource{

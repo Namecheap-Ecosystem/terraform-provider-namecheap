@@ -7,7 +7,7 @@ Provides a Namecheap domain DNS resource.
 ```hcl
 # Create a new Namecheap domain DNS
 resource "namecheap_domain_dns" "mydns" {
-    domain        = "mydomain.com"
+    domain = "mydomain.com"
     
     hosts = {
         ttl     = 300
