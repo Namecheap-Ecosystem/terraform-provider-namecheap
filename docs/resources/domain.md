@@ -7,8 +7,7 @@ Provides a Namecheap domain resource.
 ```hcl
 # Create a new Namecheap domain
 resource "namecheap_domain" "mydomain" {
-    name        = "mydomain.com"
-    // TODO
+    name = "mydomain.com"
 }
 ```
 
