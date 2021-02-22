@@ -37,6 +37,7 @@ config
 
 # Terraform
 **.tf
+**.tfvars
 
 # Provider binary
 terraform-provider-namecheap
