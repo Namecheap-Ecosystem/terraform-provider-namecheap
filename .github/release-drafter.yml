@@ -4,33 +4,32 @@ template: |
   # What's Changed
   $CHANGES
 categories:
-  - title: 'Breaking'
-    label: 'type: breaking'
-  - title: 'New'
-    label: 'type: feature'
-  - title: 'Bug Fixes'
-    label: 'type: bug'
-  - title: 'Maintenance'
-    label: 'type: maintenance'
-  - title: 'Documentation'
-    label: 'type: docs'
-  - title: 'Dependency Updates'
-    label: 'type: dependencies'
+  - title: '⚡ Breaking'
+    label: '⚡ Breaking'
+  - title: '🚀 Feature'
+    label: '🚀 Feature'
+  - title: '🐛 Bug Fixes'
+    label: '🐛 Bug Fixes'
+  - title: '⛩ Maintenance'
+    label: '⛩ Maintenance'
+  - title: '📖 Documentation'
+    label: '📖 Docs'
+  - title: '🆙 Dependency Updates'
+    label: '🆙 Dependencies'
 
 version-resolver:
   major:
     labels:
-      - 'type: breaking'
+      - '⚡ Breaking'
   minor:
     labels:
-      - 'type: feature'
+      - '🚀 Feature'
   patch:
     labels:
-      - 'type: bug'
-      - 'type: maintenance'
-      - 'type: docs'
-      - 'type: dependencies'
-      - 'type: security'
+      - '🐛 Bug Fixes'
+      - '⛩ Maintenance'
+      - '📖 Docs'
+      - '🆙 Dependencies'
 
 exclude-labels:
   - 'skip-changelog'
