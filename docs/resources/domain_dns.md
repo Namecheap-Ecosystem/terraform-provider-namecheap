@@ -35,5 +35,5 @@ The following arguments are supported:
 Namecheap domain can be imported by the domain name.
 
 ```
-$ terraform import namecheap_domain.mydomain mydomain.com
+$ terraform import namecheap_domain_dns.mydns mydomain.com
 ```
