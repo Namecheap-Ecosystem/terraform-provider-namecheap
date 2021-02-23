@@ -4,6 +4,7 @@ import (
 	"context"
 	"errors"
 	"fmt"
+	"log"
 
 	namecheap "github.com/Namecheap-Ecosystem/go-namecheap"
 
@@ -59,6 +60,7 @@ func resourceDomainRead(ctx context.Context, d *schema.ResourceData, meta interf
 
 	domain, err := c.DomainGetInfo(d.Id())
 	if err != nil {
+		log.Fatal(err)
 		return diag.FromErr(err)
 	}
 
@@ -66,7 +68,7 @@ func resourceDomainRead(ctx context.Context, d *schema.ResourceData, meta interf
 		return diag.FromErr(err)
 	}
 
-	if err := d.Set("add_free_who_isguard", domain.Whoisguard); err != nil {
+	if err := d.Set("add_free_who_isguard", domain.Whoisguard.Enabled); err != nil {
 		return diag.FromErr(err)
 	}
 
@@ -132,7 +134,7 @@ func resourceDomainDelete(ctx context.Context, d *schema.ResourceData, meta inte
 
 func resourceDomainImportState(ctx context.Context, d *schema.ResourceData, meta interface{}) ([]*schema.ResourceData, error) {
 	if diags := resourceDomainRead(ctx, d, meta); diags.HasError() {
-		return nil, fmt.Errorf("failed to import domain")
+		return nil, fmt.Errorf("failed to import domain, error:%s ", diags[0].Summary)
 	}
 
 	return []*schema.ResourceData{d}, nil
