@@ -175,5 +175,5 @@ func getDomainYears(domain *namecheap.DomainInfo) (int, error) {
 		return -1, err
 	}
 
-	return expiresAt.Sub(createdAt).Seconds() / 31207680, nil
+	return int(expiresAt.Sub(createdAt).Seconds() / 31207680), nil
 }
