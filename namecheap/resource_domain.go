@@ -24,7 +24,6 @@ func resourceDomain() *schema.Resource {
 			"years": {
 				Description: "Number of years to register",
 				Type:        schema.TypeInt,
-				Computed:    true,
 				Optional:    true,
 				Default:     1,
 			},
