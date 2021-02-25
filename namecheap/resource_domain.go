@@ -5,6 +5,7 @@ import (
 	"errors"
 	"fmt"
 	"log"
+	"time"
 
 	namecheap "github.com/Namecheap-Ecosystem/go-namecheap"
 
@@ -97,6 +98,15 @@ func resourceDomainRead(ctx context.Context, d *schema.ResourceData, meta interf
 		return diag.FromErr(err)
 	}
 
+	years, err := getDomainYears(domain)
+	if err != nil {
+		return diag.FromErr(err)
+	}
+
+	if err := d.Set("years", years); err != nil {
+		return diag.FromErr(err)
+	}
+
 	if err := d.Set("nameservers", domain.DNSDetails.Nameservers); err != nil {
 		return diag.FromErr(err)
 	}
@@ -152,4 +162,18 @@ func expandStringListFromSetSchema(list *schema.Set) []string {
 	}
 
 	return res
+}
+
+func getDomainYears(domain *namecheap.DomainInfo) (int, error) {
+	createdAt, err := time.Parse(time.RFC3339, domain.Created)
+	if err != nil {
+		return -1, err
+	}
+
+	expiresAt, err := time.Parse(time.RFC3339, domain.Expires)
+	if err != nil {
+		return -1, err
+	}
+
+	return expiresAt.Sub(createdAt).Seconds() / 31207680, nil
 }
