@@ -165,6 +165,8 @@ func expandStringListFromSetSchema(list *schema.Set) []string {
 }
 
 func getDomainYears(domain *namecheap.DomainInfo) (int, error) {
+	// Time format is quite unique and there are no pre-defined formats
+	// Ref: https://www.namecheap.com/support/api/methods/domains/get-info/
 	timeFormat := "01/02/2006"
 	createdAt, err := time.Parse(timeFormat, domain.Created)
 	if err != nil {
