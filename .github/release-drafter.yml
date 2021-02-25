@@ -4,6 +4,8 @@ template: |
   # What's Changed
   $CHANGES
 categories:
+  - title: '⭐ Stable Release'
+    label: '⭐ Stable Release'
   - title: '⚡ Breaking'
     label: '⚡ Breaking'
   - title: '🚀 Feature'
@@ -20,16 +22,17 @@ categories:
 version-resolver:
   major:
     labels:
-      - '⚡ Breaking'
+      - '⭐ Stable Release'
   minor:
     labels:
-      - '🚀 Feature'
+      - '⚡ Breaking'
   patch:
     labels:
       - '🐛 Bug Fixes'
-      - '⛩ Maintenance'
       - '📖 Docs'
       - '🆙 Dependencies'
+      - '🚀 Feature'
+      - '⛩ Maintenance'
 
 exclude-labels:
   - '🏃 skip-changelog'
