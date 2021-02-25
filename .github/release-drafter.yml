@@ -32,4 +32,4 @@ version-resolver:
       - '🆙 Dependencies'
 
 exclude-labels:
-  - 'skip-changelog'
+  - '🏃 skip-changelog'
