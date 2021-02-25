@@ -1,4 +1,22 @@
 
+<a name="v0.1.2"></a>
+## [v0.1.2](https://github.com/Namecheap-Ecosystem/terraform-provider-namecheap/compare/v0.1.1...v0.1.2) (2021-02-25)
+
+### Add
+
+* years to domain state
+
+### Fix
+
+* remove compute
+
+### Pull Requests
+
+* Merge pull request [#15](https://github.com/Namecheap-Ecosystem/terraform-provider-namecheap/issues/15) from Namecheap-Ecosystem/add-years-to-state
+* Merge pull request [#14](https://github.com/Namecheap-Ecosystem/terraform-provider-namecheap/issues/14) from Namecheap-Ecosystem/fix-default-years
+* Merge pull request [#13](https://github.com/Namecheap-Ecosystem/terraform-provider-namecheap/issues/13) from Namecheap-Ecosystem/add-changelog
+
+
 <a name="v0.1.1"></a>
 ## [v0.1.1](https://github.com/Namecheap-Ecosystem/terraform-provider-namecheap/compare/v0.1.0...v0.1.1) (2021-02-25)
 
