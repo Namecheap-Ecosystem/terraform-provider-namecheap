@@ -24,6 +24,7 @@ func resourceDomain() *schema.Resource {
 			"years": {
 				Description: "Number of years to register",
 				Type:        schema.TypeInt,
+				Computed:    true,
 				Optional:    true,
 				Default:     1,
 			},
@@ -37,6 +38,7 @@ func resourceDomain() *schema.Resource {
 				Description: "Adds free WhoisGuard for the domain",
 				Type:        schema.TypeBool,
 				Optional:    true,
+				Computed:    true,
 			},
 			"wg_enabled": {
 				Description: "Enables free WhoisGuard for the domain",
@@ -52,32 +54,6 @@ func resourceDomain() *schema.Resource {
 			StateContext: resourceDomainImportState,
 		},
 	}
-}
-
-func resourceDomainRead(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
-	c := meta.(*namecheap.Client)
-	var diags diag.Diagnostics
-
-	domain, err := c.DomainGetInfo(d.Id())
-	if err != nil {
-		log.Fatal(err)
-		return diag.FromErr(err)
-	}
-
-	if err := d.Set("nameservers", domain.DNSDetails.Nameservers); err != nil {
-		return diag.FromErr(err)
-	}
-
-	if err := d.Set("add_free_who_isguard", domain.Whoisguard.Enabled); err != nil {
-		return diag.FromErr(err)
-	}
-
-	if err := d.Set("nameservers", domain.DNSDetails.Nameservers); err != nil {
-		return diag.FromErr(err)
-	}
-
-	d.SetId(domain.Name)
-	return diags
 }
 
 func resourceDomainCreate(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
@@ -106,6 +82,36 @@ func resourceDomainCreate(ctx context.Context, d *schema.ResourceData, meta inte
 
 	d.SetId(result.Domain)
 	return resourceDomainRead(ctx, d, meta)
+}
+
+func resourceDomainRead(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
+	c := meta.(*namecheap.Client)
+	var diags diag.Diagnostics
+
+	domain, err := c.DomainGetInfo(d.Id())
+	if err != nil {
+		log.Fatal(err)
+		return diag.FromErr(err)
+	}
+
+	if err := d.Set("name", domain.Name); err != nil {
+		return diag.FromErr(err)
+	}
+
+	if err := d.Set("nameservers", domain.DNSDetails.Nameservers); err != nil {
+		return diag.FromErr(err)
+	}
+
+	if err := d.Set("add_free_who_isguard", domain.Whoisguard.Enabled); err != nil {
+		return diag.FromErr(err)
+	}
+
+	if err := d.Set("nameservers", domain.DNSDetails.Nameservers); err != nil {
+		return diag.FromErr(err)
+	}
+
+	d.SetId(domain.Name)
+	return diags
 }
 
 func resourceDomainUpdate(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
