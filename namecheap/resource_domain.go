@@ -5,6 +5,7 @@ import (
 	"errors"
 	"fmt"
 	"log"
+	"strings"
 	"time"
 
 	namecheap "github.com/Namecheap-Ecosystem/go-namecheap"
@@ -27,12 +28,6 @@ func resourceDomain() *schema.Resource {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Default:     1,
-			},
-			"nameservers": {
-				Description: "List of custom nameservers to be associated with the domain name",
-				Type:        schema.TypeList,
-				Optional:    true,
-				Elem:        &schema.Schema{Type: schema.TypeString},
 			},
 			"add_free_who_isguard": {
 				Description: "Adds free WhoisGuard for the domain",
@@ -60,13 +55,8 @@ func resourceDomainCreate(ctx context.Context, d *schema.ResourceData, meta inte
 	c := meta.(*namecheap.Client)
 	name := d.Get("name").(string)
 	years := d.Get("years").(int)
-	nameservers := expandStringListFromSetSchema(d.Get("nameservers").(*schema.Set))
 
 	opts := namecheap.DomainCreateOption{}
-	if len(nameservers) > 0 {
-		opts.Nameservers = nameservers
-	}
-
 	if v, ok := d.GetOk("add_free_who_isguard"); ok {
 		opts.AddFreeWhoisguard = v.(bool)
 	}
@@ -107,15 +97,7 @@ func resourceDomainRead(ctx context.Context, d *schema.ResourceData, meta interf
 		return diag.FromErr(err)
 	}
 
-	if err := d.Set("nameservers", domain.DNSDetails.Nameservers); err != nil {
-		return diag.FromErr(err)
-	}
-
 	if err := d.Set("add_free_who_isguard", domain.Whoisguard.Enabled); err != nil {
-		return diag.FromErr(err)
-	}
-
-	if err := d.Set("nameservers", domain.DNSDetails.Nameservers); err != nil {
 		return diag.FromErr(err)
 	}
 
@@ -179,4 +161,9 @@ func getDomainYears(domain *namecheap.DomainInfo) (int, error) {
 	}
 
 	return int(expiresAt.Sub(createdAt).Seconds() / 31207680), nil
+}
+
+func parseDomain(domain string) (string, string) {
+	elements := strings.Split(domain, ".")
+	return elements[0], elements[1]
 }

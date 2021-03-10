@@ -9,11 +9,11 @@ Provides a Namecheap domain DNS resource.
 resource "namecheap_domain_dns" "mydns" {
     domain = "mydomain.com"
     
-    hosts = {
-        ttl     = 300
-        type    = "CNAME"
-        address = "namecheap.com"
-    }
+    nameservers = [
+        "aws.com",
+        "google.com",
+        "azure.com",
+    ]
 }
 ```
 
@@ -22,18 +22,12 @@ resource "namecheap_domain_dns" "mydns" {
 The following arguments are supported:
 
 * `domain` - (Required) The domain name.
-* `hosts` - (Required) List of the custom hosts to configure.
-
-
-* `hosts`: Argument for hosts
-    * `ttl` - (Required) TTL for the host record.
-    * `type` - (Required) Type of the record .Possible values are `A`, `AAAA`, `ALIAS`, `CAA`, `CNAME`, `MX`, `MXE`, `NS`, `TXT`, `URL`, `URL301`, `FRAME`.
-    * `address` - (Required) Possible values are URL or IP address.
+* `nameservers` - (Required) The custom nameservers
 
 ## Import
 
-Namecheap domain can be imported by the domain name.
+Namecheap domain can be imported by the domain name
 
-```
+```console
 $ terraform import namecheap_domain_dns.mydns mydomain.com
 ```
