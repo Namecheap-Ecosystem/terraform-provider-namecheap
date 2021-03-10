@@ -32,8 +32,8 @@ cloud.google.com/go/storage v1.10.0/go.mod h1:FLPqc6j+Ki4BU591ie1oL6qBQGu2Bl/tZ9
 dmitri.shuralyov.com/gpu/mtl v0.0.0-20190408044501-666a987793e9/go.mod h1:H6x//7gZCb22OMCxBHrMx7a5I7Hp++hsVxbQ4BYO7hU=
 github.com/BurntSushi/toml v0.3.1/go.mod h1:xHWCNGjB5oqiDr8zfno3MHue2Ht5sIBksp03qcyfWMU=
 github.com/BurntSushi/xgb v0.0.0-20160522181843-27f122750802/go.mod h1:IVnqGOEym/WlBOVXweHU+Q+/VP0lqqI8lqeDx9IjBqo=
-github.com/Namecheap-Ecosystem/go-namecheap v0.0.0-20210213023153-2a164e62be82 h1:k/RtCDKtLMf/w40YIp0pezDR3nYu0L2G0Q9CM3GedP8=
-github.com/Namecheap-Ecosystem/go-namecheap v0.0.0-20210213023153-2a164e62be82/go.mod h1:PtHMFyHqjyvefKJcDnhQ2ewfuWjUDEcQi1tJsSHSftI=
+github.com/Namecheap-Ecosystem/go-namecheap v0.0.0-20210310202035-1b86067b819e h1:s/kOkwgwHwf+LkRjyprQkz9kHA3EVx5lk33BQSC4Jcw=
+github.com/Namecheap-Ecosystem/go-namecheap v0.0.0-20210310202035-1b86067b819e/go.mod h1:PtHMFyHqjyvefKJcDnhQ2ewfuWjUDEcQi1tJsSHSftI=
 github.com/agext/levenshtein v1.2.1/go.mod h1:JEDfjyjHDjOF/1e4FlBE/PkbqA9OfWu2ki2W0IB5558=
 github.com/agext/levenshtein v1.2.2 h1:0S/Yg6LYmFJ5stwQeRp6EeOcCbj7xiqQSdNelsXvaqE=
 github.com/agext/levenshtein v1.2.2/go.mod h1:JEDfjyjHDjOF/1e4FlBE/PkbqA9OfWu2ki2W0IB5558=
