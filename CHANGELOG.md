@@ -1,4 +1,53 @@
 
+<a name="v0.1.6"></a>
+## [v0.1.6](https://github.com/Namecheap-Ecosystem/terraform-provider-namecheap/compare/v0.1.5...v0.1.6) (2021-05-02)
+
+### Pull Requests
+
+* Merge pull request [#27](https://github.com/Namecheap-Ecosystem/terraform-provider-namecheap/issues/27) from Namecheap-Ecosystem/add-pr-template
+* Merge pull request [#26](https://github.com/Namecheap-Ecosystem/terraform-provider-namecheap/issues/26) from Namecheap-Ecosystem/fix-missing-domain-dns
+* Merge pull request [#25](https://github.com/Namecheap-Ecosystem/terraform-provider-namecheap/issues/25) from Namecheap-Ecosystem/renovate/github.com-hashicorp-terraform-plugin-sdk-v2-2.x
+* Merge pull request [#23](https://github.com/Namecheap-Ecosystem/terraform-provider-namecheap/issues/23) from Namecheap-Ecosystem/renovate/github.com-hashicorp-terraform-plugin-sdk-v2-2.x
+
+
+<a name="v0.1.5"></a>
+## [v0.1.5](https://github.com/Namecheap-Ecosystem/terraform-provider-namecheap/compare/v0.1.4...v0.1.5) (2021-03-11)
+
+### Pull Requests
+
+* Merge pull request [#21](https://github.com/Namecheap-Ecosystem/terraform-provider-namecheap/issues/21) from Namecheap-Ecosystem/add-dns-nameservers
+* Merge pull request [#19](https://github.com/Namecheap-Ecosystem/terraform-provider-namecheap/issues/19) from Namecheap-Ecosystem/update-labels
+
+
+<a name="v0.1.4"></a>
+## [v0.1.4](https://github.com/Namecheap-Ecosystem/terraform-provider-namecheap/compare/v0.1.3...v0.1.4) (2021-02-25)
+
+### Add
+
+* comment for time format
+
+### Fix
+
+* date time parser
+
+### Pull Requests
+
+* Merge pull request [#18](https://github.com/Namecheap-Ecosystem/terraform-provider-namecheap/issues/18) from Namecheap-Ecosystem/fix-time-parser
+
+
+<a name="v0.1.3"></a>
+## [v0.1.3](https://github.com/Namecheap-Ecosystem/terraform-provider-namecheap/compare/v0.1.23...v0.1.3) (2021-02-25)
+
+
+<a name="v0.1.23"></a>
+## [v0.1.23](https://github.com/Namecheap-Ecosystem/terraform-provider-namecheap/compare/v0.1.2...v0.1.23) (2021-02-25)
+
+### Pull Requests
+
+* Merge pull request [#17](https://github.com/Namecheap-Ecosystem/terraform-provider-namecheap/issues/17) from Namecheap-Ecosystem/fix-return-type
+* Merge pull request [#16](https://github.com/Namecheap-Ecosystem/terraform-provider-namecheap/issues/16) from Namecheap-Ecosystem/v0.1.2-changelog
+
+
 <a name="v0.1.2"></a>
 ## [v0.1.2](https://github.com/Namecheap-Ecosystem/terraform-provider-namecheap/compare/v0.1.1...v0.1.2) (2021-02-25)
 
