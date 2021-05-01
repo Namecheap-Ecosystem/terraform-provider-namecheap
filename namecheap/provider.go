@@ -40,7 +40,8 @@ func Provider() *schema.Provider {
 			},
 		},
 		ResourcesMap: map[string]*schema.Resource{
-			"namecheap_domain": resourceDomain(),
+			"namecheap_domain":     resourceDomain(),
+			"namecheap_domain_dns": resourceDomainDNS(),
 		},
 		DataSourcesMap:       map[string]*schema.Resource{},
 		ConfigureContextFunc: providerConfigureFunc,
