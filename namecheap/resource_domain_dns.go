@@ -22,7 +22,7 @@ func resourceDomainDNS() *schema.Resource {
 			},
 			"nameservers": {
 				Description: "List of custom nameservers to be associated with the domain name",
-				Type:        schema.TypeList,
+				Type:        schema.TypeSet,
 				Required:    true,
 				Elem:        &schema.Schema{Type: schema.TypeString},
 			},
