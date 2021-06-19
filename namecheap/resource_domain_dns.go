@@ -41,7 +41,7 @@ func resourceDomainDNSCreate(ctx context.Context, d *schema.ResourceData, meta i
 	c := meta.(*namecheap.Client)
 
 	sld, tld := parseDomain(d.Get("domain").(string))
-	nameservers := strings.Join(expandStringListFromSetSchema(d.Get("nameservers").(*schema.Set)), ",")
+	nameservers := strings.Join(expandStringListFromSetSchema(d.Get("nameservers").([]interface{})), ",")
 	res, err := c.DomainDNSSetCustom(sld, tld, nameservers)
 	if err != nil {
 		return diag.FromErr(err)
@@ -73,7 +73,7 @@ func resourceDomainDNSUpdate(ctx context.Context, d *schema.ResourceData, meta i
 	c := meta.(*namecheap.Client)
 
 	sld, tld := parseDomain(d.Id())
-	nameservers := strings.Join(expandStringListFromSetSchema(d.Get("nameservers").(*schema.Set)), ",")
+	nameservers := strings.Join(expandStringListFromSetSchema(d.Get("nameservers").([]interface{})), ",")
 	_, err := c.DomainDNSSetCustom(sld, tld, nameservers)
 	if err != nil {
 		return diag.FromErr(err)

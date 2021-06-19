@@ -137,9 +137,9 @@ func resourceDomainImportState(ctx context.Context, d *schema.ResourceData, meta
 	return []*schema.ResourceData{d}, nil
 }
 
-func expandStringListFromSetSchema(list *schema.Set) []string {
-	res := make([]string, list.Len())
-	for i, v := range list.List() {
+func expandStringListFromSetSchema(list []interface{}) []string {
+	res := make([]string, len(list))
+	for i, v := range list {
 		res[i] = v.(string)
 	}
 
