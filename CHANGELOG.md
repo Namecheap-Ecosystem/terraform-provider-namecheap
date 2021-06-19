@@ -1,4 +1,13 @@
 
+<a name="v0.1.7"></a>
+## [v0.1.7](https://github.com/Namecheap-Ecosystem/terraform-provider-namecheap/compare/v0.1.6...v0.1.7) (2021-06-20)
+
+### Pull Requests
+
+* Merge pull request [#30](https://github.com/Namecheap-Ecosystem/terraform-provider-namecheap/issues/30) from vertis/schema-typeset-fix
+* Merge pull request [#28](https://github.com/Namecheap-Ecosystem/terraform-provider-namecheap/issues/28) from Namecheap-Ecosystem/add-changelog
+
+
 <a name="v0.1.6"></a>
 ## [v0.1.6](https://github.com/Namecheap-Ecosystem/terraform-provider-namecheap/compare/v0.1.5...v0.1.6) (2021-05-02)
 
