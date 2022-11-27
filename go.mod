@@ -1,6 +1,6 @@
 module github.com/Namecheap-Ecosystem/terraform-provider-namecheap
 
-go 1.15
+go 1.19
 
 require (
 	github.com/Namecheap-Ecosystem/go-namecheap v0.0.0-20210310202035-1b86067b819e
