@@ -4,7 +4,10 @@
 
 # Terraform Provider for Namecheap
 
-The Terraform Namecheap is a plugin for Terraform that allows for the full lifecycle management of Namecheap API resources.   
+> [!WARNING]
+> Deprecated. Please use the official provider: [terraform-provider-namecheap](https://registry.terraform.io/providers/namecheap/namecheap/latest/docs).
+
+The Terraform Namecheap is a plugin for Terraform that allows for the full lifecycle management of Namecheap API resources.
 This provider is maintained by [@KeisukeYamashita](https://github.com/KeisukeYamashita).
 
 ## Contributing
